@@ -6,10 +6,35 @@
              mc:Ignorable="d"
              x:Class="TBL_Stats.Views.TeamPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="teamName"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" 
+                    x:Name="TeamName"
+                   FontSize="Title"
+                   HorizontalTextAlignment="Center"/>
+                <Label />
+                <Label Grid.Row="1" 
+                    x:Name="GamesPlayed"
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"/>
+                <Label />
+                <Label Grid.Row="2" 
+                    x:Name="Wins"
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"/>
+                <Label />
+                <Label Grid.Row="3" 
+                    x:Name="Losses"
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"/>
+                <Label />
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

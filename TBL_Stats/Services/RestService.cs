@@ -22,7 +22,7 @@ namespace TBL_Stats.Services
         public async Task<Team> GetTeamNameAsync()
         {
             Team = new Team();
-            Uri uri = new Uri(string.Format(Constants.nhlUri, string.Empty));
+            Uri uri = new Uri(string.Format(Constants.teamUri, string.Empty));
 
             try
             {
@@ -30,8 +30,12 @@ namespace TBL_Stats.Services
                 if(response.IsSuccessStatusCode)
                 {
                     JObject teamInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
-                    //JObject teamInfo = JObject.FromObject(response.Content);
+                    JToken teamStats = teamInfo["teams"][0]["teamStats"][0]["splits"][0]["stat"];
+
                     Team.TeamName = (string)teamInfo["teams"][0]["name"];
+                    Team.GamesPlayed = (int)teamStats["gamesPlayed"];
+                    Team.Wins = (int)teamStats["wins"];
+                    Team.Losses = (int)teamStats["losses"];
                 }
 
             }
