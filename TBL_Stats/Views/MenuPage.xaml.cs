@@ -38,8 +38,9 @@ namespace TBL_Stats.Views
                 if (e.SelectedItem == null)
                     return;
 
-                int id = (int)((HomeMenuItem)e.SelectedItem).Id;
-                await RootPage.NavigateFromMenu(id);
+                //int id = (int)((HomeMenuItem)e.SelectedItem).Id;
+                HomeMenuItem selectedItem = (HomeMenuItem)e.SelectedItem;
+                await RootPage.NavigateFromMenu(selectedItem);
             };
         }
     }

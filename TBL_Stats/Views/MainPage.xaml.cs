@@ -24,24 +24,25 @@ namespace TBL_Stats.Views
             MenuPages.Add((int)MenuItemType.Team, (NavigationPage)Detail);
         }
 
-        public async Task NavigateFromMenu(int id)
+        public async Task NavigateFromMenu(HomeMenuItem selectedItem)
         {
+            int id = (int)selectedItem.Id;
+
+            if (MenuPages.ContainsKey(2))
+            {
+                MenuPages.Remove(id);
+            }
+
             if (!MenuPages.ContainsKey(id))
             {
                 switch (id)
                 {
                     case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new SkaterPage()));
+                        MenuPages.Add(id, new NavigationPage(new SkaterPage(selectedItem.Title)));
                         break;
-                    //case (int)MenuItemType.About:
-                    //    MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                    //    break;
                     case (int)MenuItemType.Team:
                         MenuPages.Add(id, new NavigationPage(new TeamPage()));
                         break;
-                    //default:
-                    //    MenuPages.Add(id, new NavigationPage(new SkaterPage()));
-                    //    break;
                 }
             }
 
