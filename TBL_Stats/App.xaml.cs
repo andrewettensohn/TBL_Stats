@@ -14,7 +14,6 @@ namespace TBL_Stats
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             DataManager = new DataManager(new RestService());
             MainPage = new MainPage();
         }

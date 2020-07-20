@@ -26,7 +26,7 @@ namespace TBL_Stats.Services
 
             try
             {
-                HttpResponseMessage response = await client.GetAsync(uri);
+                HttpResponseMessage response = await client.GetAsync(uri + "?expand=team.stats");
                 if(response.IsSuccessStatusCode)
                 {
                     JObject teamInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
@@ -45,6 +45,38 @@ namespace TBL_Stats.Services
             }
 
             return Team;
+        }
+
+        public async Task<List<Skater>> GetSkatersAsync()
+        {
+            List<Skater> skaters = new List<Skater>();
+            Uri uri = new Uri(string.Format(Constants.teamUri, string.Empty));
+
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(uri + "?expand=team.roster");
+                if (response.IsSuccessStatusCode)
+                {
+                    JObject teamInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
+                    JToken roster = teamInfo["teams"][0]["roster"]["roster"];
+
+                    foreach(JToken skaterInfo in roster)
+                    {
+                        Skater skater = new Skater
+                        {
+                            SkaterId = (int)skaterInfo["person"]["id"],
+                            Name = (string)skaterInfo["person"]["fullName"]
+                        };
+                        skaters.Add(skater);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return skaters;
         }
     }
 }

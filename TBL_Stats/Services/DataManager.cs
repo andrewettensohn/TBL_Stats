@@ -19,5 +19,10 @@ namespace TBL_Stats.Services
         {
             return restService.GetTeamNameAsync();
         }
+
+        public Task<List<Skater>> GetSkatersAsync()
+        {
+            return restService.GetSkatersAsync();
+        }
     }
 }
