@@ -38,7 +38,7 @@ namespace TBL_Stats.Views
                 switch (id)
                 {
                     case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new SkaterPage(selectedItem.Title)));
+                        MenuPages.Add(id, new NavigationPage(new SkaterPage(selectedItem.SkaterId, selectedItem.Title)));
                         break;
                     case (int)MenuItemType.Team:
                         MenuPages.Add(id, new NavigationPage(new TeamPage()));

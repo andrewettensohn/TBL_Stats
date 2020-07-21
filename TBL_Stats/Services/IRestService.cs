@@ -8,5 +8,7 @@ namespace TBL_Stats.Services
     {
         Task<Team> GetTeamNameAsync();
         Task<List<Skater>> GetSkatersAsync();
+
+        Task<Skater> GetSkaterAsync(int skaterId);
     }
 }

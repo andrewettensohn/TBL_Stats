@@ -78,5 +78,31 @@ namespace TBL_Stats.Services
 
             return skaters;
         }
+
+        public async Task<Skater> GetSkaterAsync(int skaterId)
+        {
+            Skater skater = new Skater();
+            Uri uri = new Uri(string.Format(Constants.personUri, string.Empty));
+
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync($"{uri}{skaterId}/stats?stats=statsSingleSeason");
+                if (response.IsSuccessStatusCode)
+                {
+                    JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
+                    JToken skaterStats = skaterStatsInfo["stats"][0]["splits"][0]["stat"];
+                    skater.Games = (int)skaterStats["games"];
+                    skater.Goals = (int)skaterStats["goals"];
+                    skater.Assists = (int)skaterStats["assists"];
+                    //8476826/stats?stats=statsSingleSeason
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return skater;
+        }
     }
 }

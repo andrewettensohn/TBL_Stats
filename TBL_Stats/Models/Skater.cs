@@ -9,5 +9,11 @@ namespace TBL_Stats.Models
         public int SkaterId { get; set; }
 
         public string Name { get; set; }
+
+        public int Games { get; set; }
+
+        public int Goals { get; set; }
+
+        public int Assists { get; set; }
     }
 }

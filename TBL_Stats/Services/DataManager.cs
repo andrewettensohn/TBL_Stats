@@ -24,5 +24,10 @@ namespace TBL_Stats.Services
         {
             return restService.GetSkatersAsync();
         }
+
+        public Task<Skater> GetSkaterAsync(int skaterId)
+        {
+            return restService.GetSkaterAsync(skaterId);
+        }
     }
 }

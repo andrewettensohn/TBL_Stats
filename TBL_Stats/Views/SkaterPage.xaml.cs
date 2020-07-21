@@ -12,11 +12,14 @@ namespace TBL_Stats.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SkaterPage : ContentPage
     {
-        public SkaterPage(string name)
+        public SkaterPage(int SkaterId , string name)
         {
             InitializeComponent();
-            //Skater skater = Task.Run(async () => await App.DataManager.GetSkatersAsync()).Result;
+            Skater skater = Task.Run(async () => await App.DataManager.GetSkaterAsync(SkaterId)).Result;
             PlayerName.Text = name;
+            GamesPlayed.Text = $"Games Played: {skater.Games}";
+            Goals.Text = $"Goals: {skater.Goals}";
+            Assists.Text = $"Assists: {skater.Assists}";
         }
     }
 }
