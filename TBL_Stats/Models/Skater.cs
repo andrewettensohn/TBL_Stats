@@ -10,6 +10,8 @@ namespace TBL_Stats.Models
 
         public string Name { get; set; }
 
+        public string PositionShort { get; set; }
+
         public int Games { get; set; }
 
         public int Goals { get; set; }

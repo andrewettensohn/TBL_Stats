@@ -13,5 +13,7 @@ namespace TBL_Stats.Models
         public int Wins { get; set; }
 
         public int Losses { get; set; }
+
+        public int OverTime { get; set; }
     }
 }

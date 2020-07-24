@@ -21,14 +21,8 @@ namespace TBL_Stats.Views
         {
             base.OnAppearing();
 
-            //Team team = await App.DataManager.GetTeamAsync();
             Team team = await App.DataManager.GetTeamAsync();
-            TeamName.Text = team.TeamName;
-            GamesPlayed.Text = $"Games Played: {team.GamesPlayed}";
-            Wins.Text = $"Wins: {team.Wins}";
-            Losses.Text = $"Losses: {team.Losses}";
-
-            //teamName.Text = team.TeamName;
+            BindingContext = team;
         }
     }
 }

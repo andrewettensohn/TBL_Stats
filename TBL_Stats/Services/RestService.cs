@@ -36,6 +36,7 @@ namespace TBL_Stats.Services
                     Team.GamesPlayed = (int)teamStats["gamesPlayed"];
                     Team.Wins = (int)teamStats["wins"];
                     Team.Losses = (int)teamStats["losses"];
+                    Team.OverTime = (int)teamStats["ot"];
                 }
 
             }
