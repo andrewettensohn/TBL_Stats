@@ -6,23 +6,6 @@
              mc:Ignorable="d"
              x:Class="TBL_Stats.Views.TeamPage">
     <ContentPage.Content>
-        <!--<StackLayout >
-            <Grid>
-                <Label Grid.Row="0" 
-                    x:Name="TeamName"
-                   FontSize="Title"
-                   HorizontalTextAlignment="Center"/>
-                <Image Grid.Row="1"
-                    Source="teamLogo.png"/>
-            </Grid>
-            <ListView x:Name="teamStats">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>-->
         <StackLayout>
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>

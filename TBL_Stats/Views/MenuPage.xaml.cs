@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace TBL_Stats.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MenuPage : ContentPage
     {
@@ -18,8 +16,14 @@ namespace TBL_Stats.Views
         public MenuPage()
         {
             InitializeComponent();
+            OnAppearing();
+        }
 
-            List<Skater> skaters = Task.Run(async () => await App.DataManager.GetSkatersAsync()).Result;
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            List<Skater> skaters = await App.DataManager.GetSkatersAsync();
+
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Team, Title="Tampa Bay Lightning"}
@@ -31,14 +35,12 @@ namespace TBL_Stats.Views
             }
 
             ListViewMenu.ItemsSource = menuItems;
-
             ListViewMenu.SelectedItem = menuItems[0];
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
                 if (e.SelectedItem == null)
                     return;
 
-                //int id = (int)((HomeMenuItem)e.SelectedItem).Id;
                 HomeMenuItem selectedItem = (HomeMenuItem)e.SelectedItem;
                 await RootPage.NavigateFromMenu(selectedItem);
             };
