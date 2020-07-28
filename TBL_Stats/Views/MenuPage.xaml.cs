@@ -5,6 +5,7 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace TBL_Stats.Views
 {
@@ -12,6 +13,7 @@ namespace TBL_Stats.Views
     public partial class MenuPage : ContentPage
     {
         MainPage RootPage { get => Application.Current.MainPage as MainPage; }
+        public ICommand NavigateCommand { get; private set; }
         List<HomeMenuItem> menuItems;
         public MenuPage()
         {

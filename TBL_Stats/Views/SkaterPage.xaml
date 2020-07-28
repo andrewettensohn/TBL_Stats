@@ -15,22 +15,22 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" 
-                    x:Name="PlayerName"
+                    Text="{Binding Name}"
                    FontSize="Title"
                    HorizontalTextAlignment="Center"/>
                 <Label />
                 <Label Grid.Row="1" 
-                    x:Name="GamesPlayed"
+                    Text="{Binding Games}"
                    FontSize="Large"
                    HorizontalTextAlignment="Center"/>
                 <Label />
                 <Label Grid.Row="2" 
-                    x:Name="Goals"
+                    Text="{Binding Goals}"
                    FontSize="Large"
                    HorizontalTextAlignment="Center"/>
                 <Label />
                 <Label Grid.Row="3" 
-                    x:Name="Assists"
+                    Text="{Binding Assists}"
                    FontSize="Large"
                    HorizontalTextAlignment="Center"/>
                 <Label />
