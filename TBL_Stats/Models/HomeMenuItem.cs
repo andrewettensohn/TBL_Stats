@@ -16,8 +16,6 @@ namespace TBL_Stats.Models
 
         public string Title { get; set; }
 
-        public int SkaterId { get; set; }
-
-        public string SkaterName { get; set; }
+        public Skater Skater {get; set; }
     }
 }

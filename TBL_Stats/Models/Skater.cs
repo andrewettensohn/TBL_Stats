@@ -17,5 +17,7 @@ namespace TBL_Stats.Models
         public int Goals { get; set; }
 
         public int Assists { get; set; }
+
+        public List<string> YearRange { get; set; }
     }
 }

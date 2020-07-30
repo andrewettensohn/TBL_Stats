@@ -6,9 +6,9 @@ namespace TBL_Stats.Services
 {
     public interface IRestService
     {
-        Task<Team> GetTeamNameAsync();
-        Task<List<Skater>> GetSkatersAsync();
-
-        Task<Skater> GetSkaterAsync(int skaterId);
+        Task<Team> GetTeamStatsAsync();
+        Task<List<Skater>> GetRosterAsync();
+        Task<Skater> GetSkaterAsync(Skater skater);
+        Task<Skater> GetYearByYearSkaterStatsAsync(Skater skater);
     }
 }

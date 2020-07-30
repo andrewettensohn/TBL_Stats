@@ -19,7 +19,7 @@ namespace TBL_Stats.Services
             client = new HttpClient();
         }
 
-        public async Task<Team> GetTeamNameAsync()
+        public async Task<Team> GetTeamStatsAsync()
         {
             Team = new Team();
             Uri uri = new Uri(string.Format(Constants.teamUri, string.Empty));
@@ -48,7 +48,7 @@ namespace TBL_Stats.Services
             return Team;
         }
 
-        public async Task<List<Skater>> GetSkatersAsync()
+        public async Task<List<Skater>> GetRosterAsync()
         {
             List<Skater> skaters = new List<Skater>();
             Uri uri = new Uri(string.Format(Constants.teamUri, string.Empty));
@@ -66,7 +66,9 @@ namespace TBL_Stats.Services
                         Skater skater = new Skater
                         {
                             SkaterId = (int)skaterInfo["person"]["id"],
-                            Name = (string)skaterInfo["person"]["fullName"]
+                            Name = (string)skaterInfo["person"]["fullName"],
+                            PositionShort = (string)skaterInfo["position"]["abbreviation"]
+                            
                         };
                         skaters.Add(skater);
                     }
@@ -80,22 +82,59 @@ namespace TBL_Stats.Services
             return skaters;
         }
 
-        public async Task<Skater> GetSkaterAsync(int skaterId)
+        public async Task<Skater> GetSkaterAsync(Skater skater)
         {
-            Skater skater = new Skater();
             Uri uri = new Uri(string.Format(Constants.personUri, string.Empty));
 
             try
             {
-                HttpResponseMessage response = await client.GetAsync($"{uri}{skaterId}/stats?stats=statsSingleSeason");
+                HttpResponseMessage response = await client.GetAsync($"{uri}{skater.SkaterId}/stats?stats=statsSingleSeason");
                 if (response.IsSuccessStatusCode)
                 {
                     JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
                     JToken skaterStats = skaterStatsInfo["stats"][0]["splits"][0]["stat"];
-                    skater.Games = (int)skaterStats["games"];
-                    skater.Goals = (int)skaterStats["goals"];
-                    skater.Assists = (int)skaterStats["assists"];
-                    //8476826/stats?stats=statsSingleSeason
+
+                    if(skater.PositionShort != "G")
+                    {
+                        skater.Games = (int)skaterStats["games"];
+                        skater.Goals = (int)skaterStats["goals"];
+                        skater.Assists = (int)skaterStats["assists"];
+                    }
+                    else
+                    {
+                        //TODO: Goalie Logic, might be a good idea to do a view just for goalies
+                    }
+
+                    skater = await GetYearByYearSkaterStatsAsync(skater);
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return skater;
+        }
+
+        public async Task<Skater> GetYearByYearSkaterStatsAsync(Skater skater)
+        {
+            skater.YearRange = new List<string>();
+            Uri uri = new Uri(string.Format(Constants.personUri, string.Empty));
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync($"{uri}{skater.SkaterId}/stats?stats=yearByYear");
+                if (response.IsSuccessStatusCode)
+                {
+                    JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
+                    JToken skaterStats = skaterStatsInfo["stats"][0]["splits"];
+                    foreach (JToken split in skaterStats.Children())
+                    {
+                        if(split["team"]["id"] != null && (int)split["team"]["id"] == 14)
+                        {
+                            skater.YearRange.Add((string)split["season"]);
+                        }
+                    }
                 }
             }
             catch (Exception ex)

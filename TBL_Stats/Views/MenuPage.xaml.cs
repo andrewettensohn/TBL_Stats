@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Linq;
 
 namespace TBL_Stats.Views
 {
@@ -39,9 +40,15 @@ namespace TBL_Stats.Views
                 new HomeMenuItem {Id = MenuItemType.Team, Title="Tampa Bay Lightning"}
             };
 
+            skaters = skaters.OrderBy(x => x.Name).ToList();
             foreach (Skater skater in skaters)
             {
-                menuItems.Add(new HomeMenuItem { Id = MenuItemType.Browse, Title = skater.Name, SkaterId = skater.SkaterId });
+                menuItems.Add(new HomeMenuItem
+                {
+                    Id = MenuItemType.Browse,
+                    Title = $"{skater.Name} {skater.PositionShort}",
+                    Skater = skater
+                });
             }
 
             ListViewMenu.ItemsSource = menuItems;

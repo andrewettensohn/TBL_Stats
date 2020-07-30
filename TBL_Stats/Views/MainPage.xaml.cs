@@ -38,8 +38,7 @@ namespace TBL_Stats.Views
                 switch (id)
                 {
                     case (int)MenuItemType.Browse:
-                        Skater skater = await App.DataManager.GetSkaterAsync(selectedItem.SkaterId);
-                        skater.Name = selectedItem.Title;
+                        Skater skater = await App.DataManager.GetSkaterAsync(selectedItem.Skater);
                         MenuPages.Add(id, new NavigationPage(new SkaterPage(skater)));
                         break;
                     case (int)MenuItemType.Team:

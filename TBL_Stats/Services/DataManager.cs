@@ -17,17 +17,17 @@ namespace TBL_Stats.Services
 
         public Task<Team> GetTeamAsync()
         {
-            return restService.GetTeamNameAsync();
+            return restService.GetTeamStatsAsync();
         }
 
         public Task<List<Skater>> GetSkatersAsync()
         {
-            return restService.GetSkatersAsync();
+            return restService.GetRosterAsync();
         }
 
-        public Task<Skater> GetSkaterAsync(int skaterId)
+        public Task<Skater> GetSkaterAsync(Skater skater)
         {
-            return restService.GetSkaterAsync(skaterId);
+            return restService.GetSkaterAsync(skater);
         }
     }
 }
