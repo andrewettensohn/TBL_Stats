@@ -16,21 +16,22 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" 
                     Text="{Binding Name}"
-                   FontSize="Title"
+                   FontSize="30"
+                   
                    HorizontalTextAlignment="Center"/>
                 <Label />
                 <Label Grid.Row="1" 
-                    Text="{Binding Games}"
+                    Text="{Binding Games, StringFormat='Games Played: {0}'}"
                    FontSize="Large"
                    HorizontalTextAlignment="Center"/>
                 <Label />
                 <Label Grid.Row="2" 
-                    Text="{Binding Goals}"
+                    Text="{Binding Goals, StringFormat='Goals: {0}'}"
                    FontSize="Large"
                    HorizontalTextAlignment="Center"/>
                 <Label />
                 <Label Grid.Row="3" 
-                    Text="{Binding Assists}"
+                    Text="{Binding Assists, StringFormat='Assists: {0}'}"
                    FontSize="Large"
                    HorizontalTextAlignment="Center"/>
                 <Label />

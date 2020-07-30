@@ -13,12 +13,20 @@ namespace TBL_Stats.Views
     public partial class MenuPage : ContentPage
     {
         MainPage RootPage { get => Application.Current.MainPage as MainPage; }
-        public ICommand NavigateCommand { get; private set; }
         List<HomeMenuItem> menuItems;
         public MenuPage()
         {
             InitializeComponent();
             OnAppearing();
+
+            ListViewMenu.ItemSelected += async (sender, e) =>
+            {
+                if (e.SelectedItem == null)
+                    return;
+
+                HomeMenuItem selectedItem = (HomeMenuItem)e.SelectedItem;
+                await RootPage.NavigateFromMenu(selectedItem);
+            };
         }
 
         protected override async void OnAppearing()
@@ -37,15 +45,6 @@ namespace TBL_Stats.Views
             }
 
             ListViewMenu.ItemsSource = menuItems;
-            ListViewMenu.SelectedItem = menuItems[0];
-            ListViewMenu.ItemSelected += async (sender, e) =>
-            {
-                if (e.SelectedItem == null)
-                    return;
-
-                HomeMenuItem selectedItem = (HomeMenuItem)e.SelectedItem;
-                await RootPage.NavigateFromMenu(selectedItem);
-            };
         }
     }
 }

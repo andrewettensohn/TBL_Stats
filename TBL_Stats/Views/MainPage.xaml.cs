@@ -24,11 +24,6 @@ namespace TBL_Stats.Views
             MenuPages.Add((int)MenuItemType.Team, (NavigationPage)Detail);
         }
 
-        //public async Task<SkaterPage> DisplaySkaterPage(int skaterId, string skaterName)
-        //{
-        //    Skater skater = App.DataManager
-        //}
-
         public async Task NavigateFromMenu(HomeMenuItem selectedItem)
         {
             int id = (int)selectedItem.Id;
@@ -44,7 +39,7 @@ namespace TBL_Stats.Views
                 {
                     case (int)MenuItemType.Browse:
                         Skater skater = await App.DataManager.GetSkaterAsync(selectedItem.SkaterId);
-                        skater.Name = selectedItem.SkaterName;
+                        skater.Name = selectedItem.Title;
                         MenuPages.Add(id, new NavigationPage(new SkaterPage(skater)));
                         break;
                     case (int)MenuItemType.Team:
