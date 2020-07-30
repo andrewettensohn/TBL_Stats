@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -106,6 +107,7 @@ namespace TBL_Stats.Services
                     }
 
                     skater = await GetYearByYearSkaterStatsAsync(skater);
+                    skater.SelectedYearRange = skater.YearRange.LastOrDefault();
                     
                 }
             }

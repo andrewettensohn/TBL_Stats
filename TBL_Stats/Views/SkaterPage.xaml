@@ -13,11 +13,11 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
+                    <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" 
                     Text="{Binding Name}"
                    FontSize="30"
-                   
                    HorizontalTextAlignment="Center"/>
                 <Label />
                 <Label Grid.Row="1" 
@@ -35,6 +35,11 @@
                    FontSize="Large"
                    HorizontalTextAlignment="Center"/>
                 <Label />
+                <Picker Grid.Row="4" ItemsSource="{Binding YearRange}"
+                        Title="{Binding SelectedYearRange, StringFormat='Selected Season {0}'}"
+                        HorizontalOptions="Center">
+                    
+                </Picker>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

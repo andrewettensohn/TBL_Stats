@@ -18,6 +18,8 @@ namespace TBL_Stats.Models
 
         public int Assists { get; set; }
 
+        public string SelectedYearRange { get; set; }
+
         public List<string> YearRange { get; set; }
     }
 }
