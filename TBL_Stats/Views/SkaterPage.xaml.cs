@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TBL_Stats.Models;
+using TBL_Stats.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,7 +16,7 @@ namespace TBL_Stats.Views
         public SkaterPage(Skater skater)
         {
             InitializeComponent();
-            BindingContext = skater;
+            BindingContext = new SkaterViewModel(skater);
         }
     }
 }

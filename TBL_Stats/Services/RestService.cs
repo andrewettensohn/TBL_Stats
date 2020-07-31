@@ -146,5 +146,42 @@ namespace TBL_Stats.Services
 
             return skater;
         }
+
+        public async Task<Skater> GetSkaterStatsBySeasonAsync(string season, Skater skater)
+        {
+            Uri uri = new Uri(string.Format(Constants.personUri, string.Empty));
+            //Skater skater = new Skater();
+
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync($"{uri}{skater.SkaterId}/stats?stats=statsSingleSeason&season={season}");
+                if (response.IsSuccessStatusCode)
+                {
+                    JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
+                    JToken skaterStats = skaterStatsInfo["stats"][0]["splits"][0]["stat"];
+
+                    if (skater.PositionShort != "G")
+                    {
+                        skater.Games = (int)skaterStats["games"];
+                        skater.Goals = (int)skaterStats["goals"];
+                        skater.Assists = (int)skaterStats["assists"];
+                    }
+                    else
+                    {
+                        //TODO: Goalie Logic, might be a good idea to do a view just for goalies
+                    }
+
+                    skater = await GetYearByYearSkaterStatsAsync(skater);
+                    skater.SelectedYearRange = skater.YearRange.LastOrDefault();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return skater;
+        }
     }
 }

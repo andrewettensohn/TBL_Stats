@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using TBL_Stats.Models;
+using TBL_Stats.ViewModels;
 
 namespace TBL_Stats.Views
 {

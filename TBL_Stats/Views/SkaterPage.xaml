@@ -35,11 +35,20 @@
                    FontSize="Large"
                    HorizontalTextAlignment="Center"/>
                 <Label />
-                <Picker Grid.Row="4" ItemsSource="{Binding YearRange}"
+                <Picker Grid.Row="4" 
+                        ItemsSource="{Binding YearRange}"
+                        SelectedItem="{Binding SelectedYearRange}"
                         Title="{Binding SelectedYearRange, StringFormat='Selected Season {0}'}"
-                        HorizontalOptions="Center">
-                    
+                        HorizontalOptions="Start">
+                    <!--<Picker.Behaviors>
+                        <behaviors:EventHandlerBehavior EventName="SelectedIndexChanged">
+                            <behaviors:InvokeCommandAction Command="{Binding SelectedProviderChanged}" />
+                        </behaviors:EventHandlerBehavior>
+                    </Picker.Behaviors>-->
                 </Picker>
+                <!--<Button Text="Click me!" 
+                        Command="{Binding MyCommand}"
+                        CommandParameter="1"/>-->
             </Grid>
         </ScrollView>
     </ContentPage.Content>
