@@ -12,19 +12,9 @@ namespace TBL_Stats.ViewModels
 {
     public class SkaterViewModel : INotifyPropertyChanged
     {
-        //public ICommand MyCommand { private set; get; }
         public ICommand ChangeSelectedSeasonCommand { private set; get; }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Name { private set; get; }
-        public int Games { private set; get; }
-        //public int Goals { private set; get; }
-        //public int Assists { private set; get; }
-        //public string SelectedYearRange { private set; get; }
-        //public string SelectedYearRange { 
-        //    private set; 
-        //    get {OnPropertyChanged("")}; }
         private Skater Skater { get; set; }
         public string SelectedYearRange
         {
@@ -32,8 +22,18 @@ namespace TBL_Stats.ViewModels
             set
             {
                 Skater.SelectedYearRange = value;
-                UpdateSeason(value);
+                UpdateStats(value); //TODO: Ask Kevin if this is a crazy thing to do.
                 OnPropertyChanged("SelectedYearRange");
+            }
+        }
+
+        public int Games
+        {
+            get { return Skater.Games; }
+            set
+            {
+                Skater.Games = value;
+                OnPropertyChanged("Games");
             }
         }
 
@@ -53,40 +53,27 @@ namespace TBL_Stats.ViewModels
             set
             {
                 Skater.Assists = value;
-                OnPropertyChanged("");
-                //OnPropertyChanged("Assists");
+                OnPropertyChanged("Assists");
             }
         }
 
+        public string Name { private set; get; }
         public List<string> YearRange { private set; get; }
 
         public SkaterViewModel(Skater skater)
         {
             Name = skater.Name;
-            Games = skater.Games;
-            //Goals = skater.Goals;
-            //Assists = skater.Assists;
-            //SelectedYearRange = skater.SelectedYearRange;
             YearRange = skater.YearRange;
-
             Skater = skater;
-
-            //MyCommand = new Command(AddGoal);
-            //ChangeSelectedSeasonCommand = new Command<string>(ChangeSelectedSeason);
         }
 
-        async void UpdateSeason(string season)
+        async Task UpdateStats(string season)
         {
             Skater skater = await App.DataManager.GetSkaterStatsBySeasonAsync(season, Skater);
-            Skater = skater;
-            //Goals = skater.Goals;
+            Goals = skater.Goals;
+            Assists = skater.Assists;
+            Games = skater.Games;
         }
-
-        //void AddGoal()
-        //{
-        //    Goals += 1;
-        //    OnPropertyChanged("Goals");
-        //}
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
