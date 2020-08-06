@@ -4,23 +4,19 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TBL_Stats.Views.TeamPage">
+             x:Class="TBL_Stats.Views.TeamPage"
+             Title="Tampa Bay Lightning">
     <ContentPage.Content>
         <StackLayout>
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="30"/>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" 
-                    Text="{Binding TeamName}"
-                    FontSize="Title"
-                    HorizontalTextAlignment="Center"/>
-                <Label />
                 <Image Grid.Row="1" Source="teamLogo.png"/>
                 <Label Grid.Row="2" 
                     Text="{Binding GamesPlayed, StringFormat='Games Played: {0}'}"

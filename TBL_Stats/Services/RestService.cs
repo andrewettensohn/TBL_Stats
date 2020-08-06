@@ -83,41 +83,41 @@ namespace TBL_Stats.Services
             return skaters;
         }
 
-        public async Task<Skater> GetSkaterAsync(Skater skater)
-        {
-            Uri uri = new Uri(string.Format(Constants.personUri, string.Empty));
+        //public async Task<Skater> GetSkaterAsync(Skater skater)
+        //{
+        //    Uri uri = new Uri(string.Format(Constants.personUri, string.Empty));
 
-            try
-            {
-                HttpResponseMessage response = await client.GetAsync($"{uri}{skater.SkaterId}/stats?stats=statsSingleSeason");
-                if (response.IsSuccessStatusCode)
-                {
-                    JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
-                    JToken skaterStats = skaterStatsInfo["stats"][0]["splits"][0]["stat"];
+        //    try
+        //    {
+        //        HttpResponseMessage response = await client.GetAsync($"{uri}{skater.SkaterId}/stats?stats=statsSingleSeason");
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
+        //            JToken skaterStats = skaterStatsInfo["stats"][0]["splits"][0]["stat"];
 
-                    if(skater.PositionShort != "G")
-                    {
-                        skater.Games = (int)skaterStats["games"];
-                        skater.Goals = (int)skaterStats["goals"];
-                        skater.Assists = (int)skaterStats["assists"];
-                    }
-                    else
-                    {
-                        //TODO: Goalie Logic, might be a good idea to do a view just for goalies
-                    }
+        //            if(skater.PositionShort != "G")
+        //            {
+        //                skater.Games = (int)skaterStats["games"];
+        //                skater.Goals = (int)skaterStats["goals"];
+        //                skater.Assists = (int)skaterStats["assists"];
+        //            }
+        //            else
+        //            {
+        //                //TODO: Goalie Logic, might be a good idea to do a view just for goalies
+        //            }
 
-                    skater = await GetYearByYearSkaterStatsAsync(skater);
-                    skater.SelectedYearRange = skater.YearRange.LastOrDefault();
+        //            skater = await GetYearByYearSkaterStatsAsync(skater);
+        //            skater.SelectedYearRange = skater.YearRange.LastOrDefault();
                     
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"\tERROR {0}", ex.Message);
-            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine(@"\tERROR {0}", ex.Message);
+        //    }
 
-            return skater;
-        }
+        //    return skater;
+        //}
 
         public async Task<Skater> GetYearByYearSkaterStatsAsync(Skater skater)
         {
@@ -160,15 +160,19 @@ namespace TBL_Stats.Services
                     JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
                     JToken skaterStats = skaterStatsInfo["stats"][0]["splits"][0]["stat"];
 
-                    if (skater.PositionShort != "G")
+                    skater.IsGoalie = (skater.PositionShort == "G");
+                    skater.Games = (int)skaterStats["games"];
+
+                    if (!skater.IsGoalie)
                     {
-                        skater.Games = (int)skaterStats["games"];
                         skater.Goals = (int)skaterStats["goals"];
                         skater.Assists = (int)skaterStats["assists"];
                     }
                     else
                     {
-                        //TODO: Goalie Logic, might be a good idea to do a view just for goalies
+                        skater.Shutouts = (int)skaterStats["shutouts"];
+                        skater.Saves = (int)skaterStats["saves"];
+                        skater.SavePercentage = (int)skaterStats["savePercentage"];
                     }
 
                     skater = await GetYearByYearSkaterStatsAsync(skater);

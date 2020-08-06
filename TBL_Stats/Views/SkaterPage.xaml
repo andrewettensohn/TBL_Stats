@@ -4,22 +4,19 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TBL_Stats.Views.SkaterPage">
+             x:Class="TBL_Stats.Views.SkaterPage"
+             Title="{Binding Name}">
     <ContentPage.Content>
         <ScrollView>
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="100"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" 
-                    Text="{Binding Name}"
-                   FontSize="30"
-                   HorizontalTextAlignment="Center"/>
-                <Label />
+                <Image x:Name="PlayerImage" Grid.Row="0" HorizontalOptions="Start" />
                 <Label Grid.Row="1" 
                     Text="{Binding Games, StringFormat='Games Played: {0}'}"
                    FontSize="Large"

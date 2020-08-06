@@ -16,6 +16,7 @@ namespace TBL_Stats.Views
     public partial class MainPage : MasterDetailPage
     {
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        string CurrentSeason;
         public MainPage()
         {
             InitializeComponent();
@@ -23,6 +24,8 @@ namespace TBL_Stats.Views
             MasterBehavior = MasterBehavior.Popover;
 
             MenuPages.Add((int)MenuItemType.Team, (NavigationPage)Detail);
+
+            CurrentSeason = $"{DateTime.Now.AddYears(-1).Year}{DateTime.Now.Year}";
         }
 
         public async Task NavigateFromMenu(HomeMenuItem selectedItem)
@@ -39,8 +42,16 @@ namespace TBL_Stats.Views
                 switch (id)
                 {
                     case (int)MenuItemType.Browse:
-                        Skater skater = await App.DataManager.GetSkaterAsync(selectedItem.Skater);
+                        Skater skater = await App.DataManager.GetSkaterStatsBySeasonAsync(CurrentSeason, selectedItem.Skater);
                         MenuPages.Add(id, new NavigationPage(new SkaterPage(skater)));
+                        //if(skater.IsGoalie)
+                        //{
+                        //    MenuPages.Add(id, new NavigationPage(new SkaterPage(skater)));
+                        //}
+                        //else
+                        //{
+                        //    MenuPages.Add(id, new NavigationPage(new SkaterPage(skater)));
+                        //}
                         break;
                     case (int)MenuItemType.Team:
                         MenuPages.Add(id, new NavigationPage(new TeamPage()));

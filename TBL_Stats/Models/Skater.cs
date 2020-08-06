@@ -12,14 +12,26 @@ namespace TBL_Stats.Models
 
         public string PositionShort { get; set; }
 
+        public string SelectedYearRange { get; set; }
+
+        public List<string> YearRange { get; set; }
+
         public int Games { get; set; }
+
+        public bool IsGoalie { get; set; }
+
+        //Non-Goalie specific stats
 
         public int Goals { get; set; }
 
         public int Assists { get; set; }
 
-        public string SelectedYearRange { get; set; }
+        //Goalie specific stats
 
-        public List<string> YearRange { get; set; }
+        public int Shutouts { get; set; }
+
+        public int Saves { get; set; }
+
+        public decimal SavePercentage { get; set; }
     }
 }
