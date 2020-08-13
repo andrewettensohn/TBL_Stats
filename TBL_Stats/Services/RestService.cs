@@ -10,7 +10,7 @@ using TBL_Stats.Models;
 
 namespace TBL_Stats.Services
 {
-    public class RestService : IRestService
+    public class RestService
     {
         HttpClient client;
         public Team Team { get; private set; }

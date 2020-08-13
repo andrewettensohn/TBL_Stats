@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace TBL_Stats.Models
 {
-    public class Skater
+    public class Skater : INotifyPropertyChanged
     {
         public int SkaterId { get; set; }
 
@@ -16,22 +18,83 @@ namespace TBL_Stats.Models
 
         public List<string> YearRange { get; set; }
 
-        public int Games { get; set; }
-
         public bool IsGoalie { get; set; }
+
+        private int games;
+        public int Games
+        {
+            get { return games; }
+            set
+            {
+                games = value;
+                OnPropertyChanged();
+            }
+        }
 
         //Non-Goalie specific stats
 
-        public int Goals { get; set; }
+        private int goals;
+        public int Goals
+        {
+            get { return goals; }
+            set
+            {
+                goals = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public int Assists { get; set; }
+        private int assists;
+        public int Assists
+        {
+            get { return assists; }
+            set
+            {
+                assists = value;
+                OnPropertyChanged();
+            }
+        }
 
-        //Goalie specific stats
+        //Goalie Specific Stats
 
-        public int Shutouts { get; set; }
+        private int shutouts;
+        public int Shutouts
+        {
+            get { return shutouts; }
+            set
+            {
+                shutouts = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public int Saves { get; set; }
+        private int saves;
+        public int Saves
+        {
+            get { return saves; }
+            set
+            {
+                saves = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public decimal SavePercentage { get; set; }
+        private decimal savePercentage;
+        public decimal SavePercentage
+        {
+            get { return savePercentage; }
+            set
+            {
+                savePercentage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

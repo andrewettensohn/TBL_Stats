@@ -17,11 +17,11 @@ namespace TBL_Stats.Views
         {
             InitializeComponent();
             BindingContext = new SkaterViewModel(skater);
-            if(skater.SkaterId == 8478010)
-            {
-                PlayerImage.Source = "point.png";
-                //BackgroundImageSource = "point.png";
-            }
+            //if(skater.SkaterId == 8478010)
+            //{
+            //    PlayerImage.Source = "point.png";
+            //    //BackgroundImageSource = "point.png";
+            //}
             //BackgroundImageSource
         }
     }

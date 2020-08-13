@@ -8,9 +8,9 @@ namespace TBL_Stats.Services
 {
     public class DataManager
     {
-        IRestService restService;
+        RestService restService;
 
-        public DataManager(IRestService service)
+        public DataManager(RestService service)
         {
             restService = service;
         }
@@ -24,11 +24,6 @@ namespace TBL_Stats.Services
         {
             return restService.GetRosterAsync();
         }
-
-        //public Task<Skater> GetSkaterAsync(Skater skater)
-        //{
-        //    return restService.GetSkaterAsync(skater);
-        //}
 
         public Task<Skater> GetSkaterStatsBySeasonAsync(string season, Skater skater)
         {
