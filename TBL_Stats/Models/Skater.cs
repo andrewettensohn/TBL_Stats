@@ -25,7 +25,6 @@ namespace TBL_Stats.Models
             }
         }
 
-        //public List<string> YearRange { get; set; }
         private List<string> yearRange;
         public List<string> YearRange
         {

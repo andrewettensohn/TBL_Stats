@@ -43,15 +43,14 @@ namespace TBL_Stats.Views
                 {
                     case (int)MenuItemType.Browse:
                         Skater skater = await App.DataManager.GetSkaterStatsBySeasonAsync(CurrentSeason, selectedItem.Skater);
-                        MenuPages.Add(id, new NavigationPage(new SkaterPage(skater)));
-                        //if(skater.IsGoalie)
-                        //{
-                        //    MenuPages.Add(id, new NavigationPage(new SkaterPage(skater)));
-                        //}
-                        //else
-                        //{
-                        //    MenuPages.Add(id, new NavigationPage(new SkaterPage(skater)));
-                        //}
+                        if (skater.IsGoalie)
+                        {
+                            MenuPages.Add(id, new NavigationPage(new GoaliePage(skater)));
+                        }
+                        else
+                        {
+                            MenuPages.Add(id, new NavigationPage(new SkaterPage(skater)));
+                        }
                         break;
                     case (int)MenuItemType.Team:
                         MenuPages.Add(id, new NavigationPage(new TeamPage()));

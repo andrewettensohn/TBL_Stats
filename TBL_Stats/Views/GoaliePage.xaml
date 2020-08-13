@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TBL_Stats.Views.GoaliePage"
+             Title="{Binding Skater.Name}">
+    <TableView Intent="Data" HorizontalOptions="Center" Margin="80,40,80,12">
+        <TableRoot Title="Goalie Stats" TextColor="Black">
+            <TableSection>
+                <ViewCell>
+                    <Picker ItemsSource="{Binding YearRange}"
+                        SelectedItem="{Binding SelectedYearRange}"
+                        Title="{Binding SelectedYearRange}"
+                        HorizontalOptions="Center">
+                    </Picker>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Games Played"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                        <Label Text="{Binding Skater.Games}"
+                                 HorizontalOptions="EndAndExpand"
+                                 TextColor="Black"
+                                 FontSize="Medium"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Saves"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                        <Label Text="{Binding Skater.Saves}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Shutouts"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                        <Label Text="{Binding Skater.Shutouts}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Save Percentage"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                        <Label Text="{Binding Skater.SavePercentage}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>
