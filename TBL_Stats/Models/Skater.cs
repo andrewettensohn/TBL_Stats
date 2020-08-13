@@ -14,9 +14,28 @@ namespace TBL_Stats.Models
 
         public string PositionShort { get; set; }
 
-        public string SelectedYearRange { get; set; }
+        private string selectedYearRange;
+        public string SelectedYearRange
+        {
+            get { return selectedYearRange; }
+            set
+            {
+                selectedYearRange = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public List<string> YearRange { get; set; }
+        //public List<string> YearRange { get; set; }
+        private List<string> yearRange;
+        public List<string> YearRange
+        {
+            get { return yearRange; }
+            set
+            {
+                yearRange = value;
+                OnPropertyChanged();
+            }
+        }
 
         public bool IsGoalie { get; set; }
 

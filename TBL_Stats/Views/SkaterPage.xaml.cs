@@ -22,7 +22,7 @@ namespace TBL_Stats.Views
             //    PlayerImage.Source = "point.png";
             //    //BackgroundImageSource = "point.png";
             //}
-            //BackgroundImageSource
+            
         }
     }
 }

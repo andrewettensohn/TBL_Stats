@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TBL_Stats.Views.SkaterPage"
-             Title="{Binding Name}">
+             Title="{Binding Skater.Name}">
     <ContentPage.Content>
         <ScrollView>
             <Grid RowSpacing="0">

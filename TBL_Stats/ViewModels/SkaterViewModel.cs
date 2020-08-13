@@ -12,9 +12,13 @@ namespace TBL_Stats.ViewModels
 {
     public class SkaterViewModel : INotifyPropertyChanged
     {
-        public ICommand ChangeSelectedSeasonCommand { private set; get; }
+        public SkaterViewModel(Skater skater)
+        {
+            YearRange = skater.YearRange;
+            Skater = skater;
+        }
 
-        //private Skater _Skater { get; set; }
+        public ICommand ChangeSelectedSeasonCommand { private set; get; }
         public Skater Skater { get; set; }
         public string SelectedYearRange
         {
@@ -27,52 +31,12 @@ namespace TBL_Stats.ViewModels
             }
         }
 
-        //public int Games
-        //{
-        //    get { return Skater.Games; }
-        //    set
-        //    {
-        //        Skater.Games = value;
-        //        OnPropertyChanged("Games");
-        //    }
-        //}
-
-        //public int Goals
-        //{
-        //    get { return Skater.Goals; }
-        //    set
-        //    {
-        //        Skater.Goals = value;
-        //        OnPropertyChanged("Goals");
-        //    }
-        //}
-
-        //public int Assists
-        //{
-        //    get { return Skater.Assists; }
-        //    set
-        //    {
-        //        Skater.Assists = value;
-        //        OnPropertyChanged("Assists");
-        //    }
-        //}
-
-        public string Name { private set; get; }
+        public string SelectedYear { get; set; } 
         public List<string> YearRange { private set; get; }
-
-        public SkaterViewModel(Skater skater)
-        {
-            Name = skater.Name;
-            YearRange = skater.YearRange;
-            Skater = skater;
-        }
 
         async Task UpdateStats(string season)
         {
             Skater = await App.DataManager.GetSkaterStatsBySeasonAsync(season, Skater);
-            //Goals = skater.Goals;
-            //Assists = skater.Assists;
-            //Games = skater.Games;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
