@@ -7,38 +7,109 @@
              x:Class="TBL_Stats.Views.SkaterPage"
              Title="{Binding Skater.Name}">
     <ContentPage.Content>
-        <ScrollView>
-            <Grid RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="100"/>
-                </Grid.RowDefinitions>
-                <Image x:Name="PlayerImage" Grid.Row="0" HorizontalOptions="Start" />
-                <Label Grid.Row="1" 
-                    Text="{Binding Skater.Games, StringFormat='Games Played: {0}'}"
-                   FontSize="Large"
-                   HorizontalTextAlignment="Center"/>
-                <Label />
-                <Label Grid.Row="2" 
-                    Text="{Binding Skater.Goals, StringFormat='Goals: {0}'}"
-                   FontSize="Large"
-                   HorizontalTextAlignment="Center"/>
-                <Label />
-                <Label Grid.Row="3" 
-                    Text="{Binding Skater.Assists, StringFormat='Assists: {0}'}"
-                   FontSize="Large"
-                   HorizontalTextAlignment="Center"/>
-                <Label />
-                <Picker Grid.Row="4" 
-                        ItemsSource="{Binding YearRange}"
-                        SelectedItem="{Binding SelectedYearRange}"
-                        Title="{Binding SelectedYearRange}"
-                        HorizontalOptions="Center">
-                </Picker>
-            </Grid>
-        </ScrollView>
+        <StackLayout>
+            <TableView Intent="Data" HorizontalOptions="Center" Margin="80,12,80,12">
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell>
+                            <Picker ItemsSource="{Binding YearRange}"
+                                    SelectedItem="{Binding SelectedYearRange}"
+                                    Title="Season"
+                                    HorizontalOptions="Center">     
+                            </Picker>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="Regular Season"
+                               TextColor="Black"
+                               FontSize="Medium"
+                               HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Games Played"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonSkaterStats.Games}"
+                                 HorizontalOptions="EndAndExpand"
+                                 TextColor="Black"
+                                 FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Goals"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonSkaterStats.Goals}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Assists"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonSkaterStats.Assists}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+            <TableView Intent="Data" HorizontalOptions="Center" Margin="80,12,80,12" VerticalOptions="EndAndExpand">
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="Playoffs"
+                               TextColor="Black"
+                               FontSize="Medium"
+                               HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Games Played"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.PlayoffSkaterStats.Games}"
+                                 HorizontalOptions="EndAndExpand"
+                                 TextColor="Black"
+                                 FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Goals"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.PlayoffSkaterStats.Goals}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Assists"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.PlayoffSkaterStats.Assists}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

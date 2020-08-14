@@ -27,7 +27,7 @@ namespace TBL_Stats.Services
 
         public Task<Skater> GetSkaterStatsBySeasonAsync(string season, Skater skater)
         {
-            return restService.GetSkaterStatsBySeasonAsync(season, skater);
+            return restService.GetSkaterStatsBySeasonAsync(skater, season);
         }
     }
 }

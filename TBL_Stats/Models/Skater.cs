@@ -9,10 +9,9 @@ namespace TBL_Stats.Models
     public class Skater : INotifyPropertyChanged
     {
         public int SkaterId { get; set; }
-
         public string Name { get; set; }
-
         public string PositionShort { get; set; }
+        public int JerseyNumber { get; set; }
 
         private string selectedYearRange;
         public string SelectedYearRange
@@ -38,72 +37,51 @@ namespace TBL_Stats.Models
 
         public bool IsGoalie { get; set; }
 
-        private int games;
-        public int Games
-        {
-            get { return games; }
-            set
-            {
-                games = value;
-                OnPropertyChanged();
-            }
-        }
-
         //Non-Goalie specific stats
 
-        private int goals;
-        public int Goals
+        private SkaterStats regularSeasonSkaterStats;
+        public SkaterStats RegularSeasonSkaterStats
         {
-            get { return goals; }
+            get { return regularSeasonSkaterStats; }
             set
             {
-                goals = value;
+                regularSeasonSkaterStats = value;
                 OnPropertyChanged();
             }
         }
 
-        private int assists;
-        public int Assists
+        private SkaterStats playoffSkaterStats;
+        public SkaterStats PlayoffSkaterStats
         {
-            get { return assists; }
+            get { return playoffSkaterStats; }
             set
             {
-                assists = value;
+                playoffSkaterStats = value;
                 OnPropertyChanged();
             }
         }
+
 
         //Goalie Specific Stats
 
-        private int shutouts;
-        public int Shutouts
+        private GoalieStats regularSeasonGoalieStats;
+        public GoalieStats RegularSeasonGoalieStats
         {
-            get { return shutouts; }
+            get { return regularSeasonGoalieStats; }
             set
             {
-                shutouts = value;
+                regularSeasonGoalieStats = value;
                 OnPropertyChanged();
             }
         }
 
-        private int saves;
-        public int Saves
+        private GoalieStats playoffGoalieStats;
+        public GoalieStats PlayoffGoalieStats
         {
-            get { return saves; }
+            get { return playoffGoalieStats; }
             set
             {
-                saves = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private decimal savePercentage;
-        public decimal SavePercentage
-        {
-            get { return savePercentage; }
-            set
-            {
-                savePercentage = value;
+                playoffGoalieStats = value;
                 OnPropertyChanged();
             }
         }

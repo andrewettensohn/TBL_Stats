@@ -14,6 +14,7 @@ namespace TBL_Stats.Services
     {
         HttpClient client;
         public Team Team { get; private set; }
+        private Uri PersonUri = new Uri(string.Format(Constants.personUri, string.Empty));
 
         public RestService()
         {
@@ -68,8 +69,8 @@ namespace TBL_Stats.Services
                         {
                             SkaterId = (int)skaterInfo["person"]["id"],
                             Name = (string)skaterInfo["person"]["fullName"],
-                            PositionShort = (string)skaterInfo["position"]["abbreviation"]
-                            
+                            PositionShort = (string)skaterInfo["position"]["abbreviation"],
+                            JerseyNumber = (int)skaterInfo["jerseyNumber"]
                         };
                         skaters.Add(skater);
                     }
@@ -83,49 +84,12 @@ namespace TBL_Stats.Services
             return skaters;
         }
 
-        //public async Task<Skater> GetSkaterAsync(Skater skater)
-        //{
-        //    Uri uri = new Uri(string.Format(Constants.personUri, string.Empty));
-
-        //    try
-        //    {
-        //        HttpResponseMessage response = await client.GetAsync($"{uri}{skater.SkaterId}/stats?stats=statsSingleSeason");
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
-        //            JToken skaterStats = skaterStatsInfo["stats"][0]["splits"][0]["stat"];
-
-        //            if(skater.PositionShort != "G")
-        //            {
-        //                skater.Games = (int)skaterStats["games"];
-        //                skater.Goals = (int)skaterStats["goals"];
-        //                skater.Assists = (int)skaterStats["assists"];
-        //            }
-        //            else
-        //            {
-        //                //TODO: Goalie Logic, might be a good idea to do a view just for goalies
-        //            }
-
-        //            skater = await GetYearByYearSkaterStatsAsync(skater);
-        //            skater.SelectedYearRange = skater.YearRange.LastOrDefault();
-                    
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine(@"\tERROR {0}", ex.Message);
-        //    }
-
-        //    return skater;
-        //}
-
         public async Task<Skater> GetYearByYearSkaterStatsAsync(Skater skater)
         {
             skater.YearRange = new List<string>();
-            Uri uri = new Uri(string.Format(Constants.personUri, string.Empty));
             try
             {
-                HttpResponseMessage response = await client.GetAsync($"{uri}{skater.SkaterId}/stats?stats=yearByYear");
+                HttpResponseMessage response = await client.GetAsync($"{PersonUri}{skater.SkaterId}/stats?stats=yearByYear");
                 if (response.IsSuccessStatusCode)
                 {
                     JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
@@ -147,37 +111,95 @@ namespace TBL_Stats.Services
             return skater;
         }
 
-        public async Task<Skater> GetSkaterStatsBySeasonAsync(string season, Skater skater)
+        public async Task<Skater> GetSkaterStatsBySeasonAsync(Skater skater, string season)
         {
-            Uri uri = new Uri(string.Format(Constants.personUri, string.Empty));
-            //Skater skater = new Skater();
+            skater = await GetRegularSeasonSkaterStats(skater, season);
+            skater = await GetSkaterPlayoffStats(skater, season);
 
+            return skater;
+
+        }
+
+        public async Task<Skater> GetRegularSeasonSkaterStats(Skater skater, string season)
+        {
             try
             {
-                HttpResponseMessage response = await client.GetAsync($"{uri}{skater.SkaterId}/stats?stats=statsSingleSeason&season={season}");
+                HttpResponseMessage response = await client.GetAsync($"{PersonUri}{skater.SkaterId}/stats?stats=statsSingleSeason&season={season}");
                 if (response.IsSuccessStatusCode)
                 {
                     JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
                     JToken skaterStats = skaterStatsInfo["stats"][0]["splits"][0]["stat"];
 
                     skater.IsGoalie = (skater.PositionShort == "G");
-                    skater.Games = (int)skaterStats["games"];
 
                     if (!skater.IsGoalie)
                     {
-                        skater.Goals = (int)skaterStats["goals"];
-                        skater.Assists = (int)skaterStats["assists"];
+                        skater.RegularSeasonSkaterStats = new SkaterStats
+                        {
+                            Games = (int)skaterStats["games"],
+                            Goals = (int)skaterStats["goals"],
+                            Assists = (int)skaterStats["assists"]
+                        };
                     }
                     else
                     {
-                        skater.Shutouts = (int)skaterStats["shutouts"];
-                        skater.Saves = (int)skaterStats["saves"];
-                        skater.SavePercentage = (int)skaterStats["savePercentage"];
+                        skater.RegularSeasonGoalieStats = new GoalieStats
+                        {
+                            Games = (int)skaterStats["games"],
+                            Shutouts = (int)skaterStats["shutouts"],
+                            Saves = (int)skaterStats["saves"],
+                            SavePercentage = (int)skaterStats["savePercentage"],
+                            PowerPlaySaves = (int)skaterStats["powerPlaySaves"],
+                            ShotsAgainst = (int)skaterStats["shotsAgainst"],
+                        };
                     }
 
                     skater = await GetYearByYearSkaterStatsAsync(skater);
                     skater.SelectedYearRange = skater.YearRange.LastOrDefault();
 
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return skater;
+        }
+
+        public async Task<Skater> GetSkaterPlayoffStats(Skater skater, string season)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync($"{PersonUri}{skater.SkaterId}/stats?stats=statsSingleSeasonPlayoffs&season={season}");
+                if (response.IsSuccessStatusCode)
+                {
+                    JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
+                    JToken skaterStats = skaterStatsInfo["stats"][0]["splits"][0]["stat"];
+
+                    skater.IsGoalie = (skater.PositionShort == "G");
+
+                    if (!skater.IsGoalie)
+                    {
+                        skater.PlayoffSkaterStats = new SkaterStats
+                        {
+                            Games = (int)skaterStats["games"],
+                            Goals = (int)skaterStats["goals"],
+                            Assists = (int)skaterStats["assists"]
+                        };
+                    }
+                    else
+                    {
+                        skater.PlayoffGoalieStats = new GoalieStats
+                        {
+                            Games = (int)skaterStats["games"],
+                            Shutouts = (int)skaterStats["shutouts"],
+                            Saves = (int)skaterStats["saves"],
+                            SavePercentage = (int)skaterStats["savePercentage"],
+                            PowerPlaySaves = (int)skaterStats["powerPlaySaves"],
+                            ShotsAgainst = (int)skaterStats["shotsAgainst"],
+                        };
+                    }
                 }
             }
             catch (Exception ex)
