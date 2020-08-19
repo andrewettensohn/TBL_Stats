@@ -74,6 +74,17 @@ namespace TBL_Stats.Models
             }
         }
 
+        private int shortHandedSaves;
+        public int ShortHandedSaves
+        {
+            get { return shortHandedSaves; }
+            set
+            {
+                shortHandedSaves = value;
+                OnPropertyChanged();
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

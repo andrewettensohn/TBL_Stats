@@ -151,6 +151,7 @@ namespace TBL_Stats.Services
                             SavePercentage = (int)skaterStats["savePercentage"],
                             PowerPlaySaves = (int)skaterStats["powerPlaySaves"],
                             ShotsAgainst = (int)skaterStats["shotsAgainst"],
+                            ShortHandedSaves = (int)skaterStats["shortHandedSaves"]
                         };
                     }
 
@@ -198,6 +199,7 @@ namespace TBL_Stats.Services
                             SavePercentage = (int)skaterStats["savePercentage"],
                             PowerPlaySaves = (int)skaterStats["powerPlaySaves"],
                             ShotsAgainst = (int)skaterStats["shotsAgainst"],
+                            ShortHandedSaves = (int)skaterStats["shortHandedSaves"]
                         };
                     }
                 }

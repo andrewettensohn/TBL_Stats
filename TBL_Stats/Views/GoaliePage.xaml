@@ -6,154 +6,180 @@
              mc:Ignorable="d"
              x:Class="TBL_Stats.Views.GoaliePage"
              Title="{Binding Skater.Name}">
-    <StackLayout>
-        <TableView Intent="Data" HorizontalOptions="Center" Margin="80,12,80,12">
-            <TableRoot>
-                <TableSection>
-                    <ViewCell>
-                        <Picker ItemsSource="{Binding YearRange}"
+    <ScrollView VerticalScrollBarVisibility="Always">
+        <Grid Margin="40,0,40,0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="400" />
+                <RowDefinition Height="400" />
+            </Grid.RowDefinitions>
+            <TableView Intent="Data" HorizontalOptions="Center" Grid.Row="0">
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell>
+                            <Picker ItemsSource="{Binding YearRange}"
                         SelectedItem="{Binding SelectedYearRange}"
                         Title="Season"
                         HorizontalOptions="Center">
-                        </Picker>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout>
-                            <Label Text="Regular Season"
+                            </Picker>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="Regular Season"
                                TextColor="Black"
                                FontSize="Medium"
                                HorizontalOptions="CenterAndExpand"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Games Played"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Games Played"
                                TextColor="Black"
                                FontSize="Medium"/>
-                            <Label Text="{Binding Skater.RegularSeasonGoalieStats.Games}"
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.Games}"
                                  HorizontalOptions="EndAndExpand"
                                  TextColor="Black"
                                  FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Saves"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Saves"
                                TextColor="Black"
                                FontSize="Medium"/>
-                            <Label Text="{Binding Skater.RegularSeasonGoalieStats.Saves}"
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.Saves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Shots Against"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Shots Against"
                                TextColor="Black"
                                FontSize="Medium"/>
-                            <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShotsAgainst}"
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShotsAgainst}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Shutouts"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Shutouts"
                                TextColor="Black"
                                FontSize="Medium"/>
-                            <Label Text="{Binding Skater.RegularSeasonGoalieStats.Shutouts}"
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.Shutouts}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Powerplay Saves"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Powerplay Saves"
                                TextColor="Black"
                                FontSize="Medium"/>
-                            <Label Text="{Binding Skater.RegularSeasonGoalieStats.PowerPlaySaves}"
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.PowerPlaySaves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
-                </TableSection>
-            </TableRoot>
-        </TableView>
-        
-        <TableView Intent="Data" HorizontalOptions="Center" Margin="80,12,80,12" VerticalOptions="EndAndExpand">
-            <TableRoot>
-                <TableSection>
-                    <ViewCell>
-                        <StackLayout>
-                            <Label Text="Playoffs"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Shorthanded Saves"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShortHandedSaves}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+            <TableView Intent="Data" HorizontalOptions="Center" Grid.Row="1">
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="Playoffs"
                                TextColor="Black"
                                FontSize="Medium"
                                HorizontalOptions="CenterAndExpand"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Games Played"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Games Played"
                                TextColor="Black"
                                FontSize="Medium"/>
-                            <Label Text="{Binding Skater.PlayoffGoalieStats.Games}"
+                                <Label Text="{Binding Skater.PlayoffGoalieStats.Games}"
                                  HorizontalOptions="EndAndExpand"
                                  TextColor="Black"
                                  FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Saves"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Saves"
                                TextColor="Black"
                                FontSize="Medium"/>
-                            <Label Text="{Binding Skater.PlayoffGoalieStats.Saves}"
+                                <Label Text="{Binding Skater.PlayoffGoalieStats.Saves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Shots Against"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Shots Against"
                                TextColor="Black"
                                FontSize="Medium"/>
-                            <Label Text="{Binding Skater.PlayoffGoalieStats.ShotsAgainst}"
+                                <Label Text="{Binding Skater.PlayoffGoalieStats.ShotsAgainst}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Shutouts"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Shutouts"
                                TextColor="Black"
                                FontSize="Medium"/>
-                            <Label Text="{Binding Skater.PlayoffGoalieStats.Shutouts}"
+                                <Label Text="{Binding Skater.PlayoffGoalieStats.Shutouts}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Powerplay Saves"
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Powerplay Saves"
                                TextColor="Black"
                                FontSize="Medium"/>
-                            <Label Text="{Binding Skater.PlayoffGoalieStats.PowerPlaySaves}"
+                                <Label Text="{Binding Skater.PlayoffGoalieStats.PowerPlaySaves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
-                </TableSection>
-            </TableRoot>
-        </TableView>
-    </StackLayout>
-    
-    
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Shorthanded Saves"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShortHandedSaves}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </Grid>
+    </ScrollView>
 </ContentPage>
