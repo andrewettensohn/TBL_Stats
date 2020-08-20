@@ -86,7 +86,7 @@ namespace TBL_Stats.Models
         }
 
         private decimal powerPlaySavePercentage;
-        public decimal SavePercentage
+        public decimal PowerPlaySavePercentage
         {
             get { return powerPlaySavePercentage; }
             set
@@ -97,23 +97,23 @@ namespace TBL_Stats.Models
         }
 
         private decimal shortHandedSavePercentage;
-        public decimal SavePercentage
+        public decimal ShortHandedSavePercentage
         {
             get { return shortHandedSavePercentage; }
             set
             {
-                savePercentage = value;
+                shortHandedSavePercentage = value;
                 OnPropertyChanged();
             }
         }
 
-        private decimal savePercentage;
-        public decimal SavePercentage
+        private decimal evenStrengthSavePercentage;
+        public decimal EvenStrengthSavePercentage
         {
-            get { return savePercentage; }
+            get { return evenStrengthSavePercentage; }
             set
             {
-                savePercentage = value;
+                evenStrengthSavePercentage = value;
                 OnPropertyChanged();
             }
         }

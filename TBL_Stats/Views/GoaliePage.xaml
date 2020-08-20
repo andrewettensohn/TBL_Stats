@@ -9,8 +9,8 @@
     <ScrollView VerticalScrollBarVisibility="Always">
         <Grid Margin="40,0,40,0" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="450" />
-                <RowDefinition Height="450" />
+                <RowDefinition Height="600" />
+                <RowDefinition Height="600" />
             </Grid.RowDefinitions>
             <TableView Intent="Data" HorizontalOptions="Center" Grid.Row="0">
                 <TableRoot>
@@ -107,6 +107,39 @@
                                 FontSize="Medium"/>
                             </StackLayout>
                         </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Even Strength Save Percentage"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.EvenStrengthSavePercentage}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Powerplay Save Percentage"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.PowerPlaySavePercentage}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Shorthanded Save Percentage"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShortHandedSavePercentage}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
                     </TableSection>
                 </TableRoot>
             </TableView>
@@ -194,6 +227,39 @@
                                TextColor="Black"
                                FontSize="Medium"/>
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShortHandedSaves}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Even Strength Save Percentage"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.EvenStrengthSavePercentage}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Powerplay Save Percentage"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.PowerPlaySavePercentage}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Shorthanded Save Percentage"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShortHandedSavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>

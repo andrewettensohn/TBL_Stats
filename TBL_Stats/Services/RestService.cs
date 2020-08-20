@@ -134,25 +134,11 @@ namespace TBL_Stats.Services
 
                     if (!skater.IsGoalie)
                     {
-                        skater.RegularSeasonSkaterStats = new SkaterStats
-                        {
-                            Games = (int)skaterStats["games"],
-                            Goals = (int)skaterStats["goals"],
-                            Assists = (int)skaterStats["assists"]
-                        };
+                        skater.RegularSeasonSkaterStats = ConvertJsonToSkaterStats(skaterStats);
                     }
                     else
                     {
-                        skater.RegularSeasonGoalieStats = new GoalieStats
-                        {
-                            Games = (int)skaterStats["games"],
-                            Shutouts = (int)skaterStats["shutouts"],
-                            Saves = (int)skaterStats["saves"],
-                            SavePercentage = (decimal)skaterStats["savePercentage"],
-                            PowerPlaySaves = (int)skaterStats["powerPlaySaves"],
-                            ShotsAgainst = (int)skaterStats["shotsAgainst"],
-                            ShortHandedSaves = (int)skaterStats["shortHandedSaves"]
-                        };
+                        skater.RegularSeasonGoalieStats = ConvertJsonToGoalieStats(skaterStats);
                     }
 
                     skater = await GetYearByYearSkaterStatsAsync(skater);
@@ -182,25 +168,11 @@ namespace TBL_Stats.Services
 
                     if (!skater.IsGoalie)
                     {
-                        skater.PlayoffSkaterStats = new SkaterStats
-                        {
-                            Games = (int)skaterStats["games"],
-                            Goals = (int)skaterStats["goals"],
-                            Assists = (int)skaterStats["assists"]
-                        };
+                        skater.PlayoffSkaterStats = ConvertJsonToSkaterStats(skaterStats);
                     }
                     else
                     {
-                        skater.PlayoffGoalieStats = new GoalieStats
-                        {
-                            Games = (int)skaterStats["games"],
-                            Shutouts = (int)skaterStats["shutouts"],
-                            Saves = (int)skaterStats["saves"],
-                            SavePercentage = (decimal)skaterStats["savePercentage"],
-                            PowerPlaySaves = (int)skaterStats["powerPlaySaves"],
-                            ShotsAgainst = (int)skaterStats["shotsAgainst"],
-                            ShortHandedSaves = (int)skaterStats["shortHandedSaves"]
-                        };
+                        skater.PlayoffGoalieStats = ConvertJsonToGoalieStats(skaterStats);
                     }
                 }
             }
@@ -210,6 +182,34 @@ namespace TBL_Stats.Services
             }
 
             return skater;
+        }
+
+        private GoalieStats ConvertJsonToGoalieStats(JToken json)
+        {
+            return new GoalieStats
+            {
+                Games = (int)json["games"],
+                Shutouts = (int)json["shutouts"],
+                Saves = (int)json["saves"],
+                SavePercentage = Math.Round((decimal)json["savePercentage"], 2),
+                PowerPlaySaves = (int)json["powerPlaySaves"],
+                ShotsAgainst = (int)json["shotsAgainst"],
+                ShortHandedSaves = (int)json["shortHandedSaves"],
+                EvenStrengthSavePercentage = Math.Round((decimal)json["evenStrengthSavePercentage"], 2),
+                PowerPlaySavePercentage = Math.Round((decimal)json["powerPlaySavePercentage"], 2),
+                ShortHandedSavePercentage = Math.Round((decimal)json["shortHandedSavePercentage"], 2),
+
+            };
+        }
+
+        private SkaterStats ConvertJsonToSkaterStats(JToken json)
+        {
+            return new SkaterStats
+            {
+                Games = (int)json["games"],
+                Goals = (int)json["goals"],
+                Assists = (int)json["assists"]
+            };
         }
     }
 }
