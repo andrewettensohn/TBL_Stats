@@ -208,7 +208,12 @@ namespace TBL_Stats.Services
             {
                 Games = (int)json["games"],
                 Goals = (int)json["goals"],
-                Assists = (int)json["assists"]
+                Assists = (int)json["assists"],
+                ShotPct = Math.Round((decimal)json["shotPct"], 2),
+                FaceOffPct = Math.Round((decimal)json["faceOffPct"], 2),
+                Hits = (int)json["hits"],
+                PowerPlayGoals = (int)json["powerPlayGoals"],
+                PowerPlayPoints = (int)json["powerPlayPoints"],
             };
         }
     }

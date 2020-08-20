@@ -41,6 +41,61 @@ namespace TBL_Stats.Models
             }
         }
 
+        private int powerPlayGoals;
+        public int PowerPlayGoals
+        {
+            get { return powerPlayGoals; }
+            set
+            {
+                powerPlayGoals = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int powerPlayPoints;
+        public int PowerPlayPoints
+        {
+            get { return powerPlayPoints; }
+            set
+            {
+                powerPlayPoints = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int hits;
+        public int Hits
+        {
+            get { return hits; }
+            set
+            {
+                hits = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private decimal faceOffPct;
+        public decimal FaceOffPct
+        {
+            get { return faceOffPct; }
+            set
+            {
+                faceOffPct = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private decimal shotPct;
+        public decimal ShotPct
+        {
+            get { return shotPct; }
+            set
+            {
+                shotPct = value;
+                OnPropertyChanged();
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

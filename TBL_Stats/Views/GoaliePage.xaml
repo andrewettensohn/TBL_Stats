@@ -226,7 +226,7 @@
                                 <Label Text="Shorthanded Saves"
                                TextColor="Black"
                                FontSize="Medium"/>
-                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShortHandedSaves}"
+                                <Label Text="{Binding Skater.PlayoffGoalieStats.ShortHandedSaves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
@@ -237,7 +237,7 @@
                                 <Label Text="Even Strength Save Percentage"
                                TextColor="Black"
                                FontSize="Medium"/>
-                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.EvenStrengthSavePercentage}"
+                                <Label Text="{Binding Skater.PlayoffGoalieStats.EvenStrengthSavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
@@ -248,7 +248,7 @@
                                 <Label Text="Powerplay Save Percentage"
                                TextColor="Black"
                                FontSize="Medium"/>
-                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.PowerPlaySavePercentage}"
+                                <Label Text="{Binding Skater.PlayoffGoalieStats.PowerPlaySavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
@@ -259,7 +259,7 @@
                                 <Label Text="Shorthanded Save Percentage"
                                TextColor="Black"
                                FontSize="Medium"/>
-                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShortHandedSavePercentage}"
+                                <Label Text="{Binding Skater.PlayoffGoalieStats.ShortHandedSavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
