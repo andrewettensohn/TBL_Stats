@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -8,6 +9,7 @@ namespace TBL_Stats.Models
 {
     public class Skater : INotifyPropertyChanged
     {
+        [PrimaryKey]
         public int SkaterId { get; set; }
         public string Name { get; set; }
         public string PositionShort { get; set; }

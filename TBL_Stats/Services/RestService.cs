@@ -113,8 +113,11 @@ namespace TBL_Stats.Services
 
         public async Task<Skater> GetSkaterStatsBySeasonAsync(Skater skater, string season)
         {
+            skater.IsGoalie = (skater.PositionShort == "G");
             skater = await GetRegularSeasonSkaterStats(skater, season);
             skater = await GetSkaterPlayoffStats(skater, season);
+            skater = await GetYearByYearSkaterStatsAsync(skater);
+            skater.SelectedYearRange = skater.YearRange.LastOrDefault();
 
             return skater;
 
@@ -136,6 +139,7 @@ namespace TBL_Stats.Services
                     {
                         skater.RegularSeasonSkaterStats = new SkaterStats
                         {
+                            SkaterId = skater.SkaterId,
                             Games = (int)skaterStats["games"],
                             Goals = (int)skaterStats["goals"],
                             Assists = (int)skaterStats["assists"]
@@ -145,6 +149,7 @@ namespace TBL_Stats.Services
                     {
                         skater.RegularSeasonGoalieStats = new GoalieStats
                         {
+                            SkaterId = skater.SkaterId,
                             Games = (int)skaterStats["games"],
                             Shutouts = (int)skaterStats["shutouts"],
                             Saves = (int)skaterStats["saves"],
@@ -153,10 +158,10 @@ namespace TBL_Stats.Services
                             ShotsAgainst = (int)skaterStats["shotsAgainst"],
                         };
                     }
-
-                    skater = await GetYearByYearSkaterStatsAsync(skater);
-                    skater.SelectedYearRange = skater.YearRange.LastOrDefault();
-
+                }
+                else
+                {
+                    skater = await App.DataManager.GetSavedSkater(skater);
                 }
             }
             catch (Exception ex)
@@ -177,12 +182,11 @@ namespace TBL_Stats.Services
                     JObject skaterStatsInfo = JObject.Parse(await response.Content.ReadAsStringAsync());
                     JToken skaterStats = skaterStatsInfo["stats"][0]["splits"][0]["stat"];
 
-                    skater.IsGoalie = (skater.PositionShort == "G");
-
                     if (!skater.IsGoalie)
                     {
                         skater.PlayoffSkaterStats = new SkaterStats
                         {
+                            SkaterId = skater.SkaterId,
                             Games = (int)skaterStats["games"],
                             Goals = (int)skaterStats["goals"],
                             Assists = (int)skaterStats["assists"]
@@ -192,6 +196,7 @@ namespace TBL_Stats.Services
                     {
                         skater.PlayoffGoalieStats = new GoalieStats
                         {
+                            SkaterId = skater.SkaterId,
                             Games = (int)skaterStats["games"],
                             Shutouts = (int)skaterStats["shutouts"],
                             Saves = (int)skaterStats["saves"],

@@ -33,7 +33,7 @@ namespace TBL_Stats.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            List<Skater> skaters = await App.DataManager.GetSkatersAsync();
+            List<Skater> skaters = await App.DataManager.GetRosterAsync();
 
             menuItems = new List<HomeMenuItem>
             {

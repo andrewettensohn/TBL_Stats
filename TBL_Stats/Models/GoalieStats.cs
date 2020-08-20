@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -8,6 +9,8 @@ namespace TBL_Stats.Models
 {
     public class GoalieStats : INotifyPropertyChanged
     {
+        [PrimaryKey]
+        public int SkaterId { get; set; }
         private int games;
         public int Games
         {

@@ -22,8 +22,9 @@ namespace TBL_Stats
         {
         }
 
-        protected override void OnSleep()
+        protected async override void OnSleep()
         {
+            await DataManager.SyncSkaterStatsAsync();
         }
 
         protected override void OnResume()
