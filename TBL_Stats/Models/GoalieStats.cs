@@ -85,6 +85,40 @@ namespace TBL_Stats.Models
             }
         }
 
+        private decimal powerPlaySavePercentage;
+        public decimal SavePercentage
+        {
+            get { return powerPlaySavePercentage; }
+            set
+            {
+                powerPlaySavePercentage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private decimal shortHandedSavePercentage;
+        public decimal SavePercentage
+        {
+            get { return shortHandedSavePercentage; }
+            set
+            {
+                savePercentage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private decimal savePercentage;
+        public decimal SavePercentage
+        {
+            get { return savePercentage; }
+            set
+            {
+                savePercentage = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -148,7 +148,7 @@ namespace TBL_Stats.Services
                             Games = (int)skaterStats["games"],
                             Shutouts = (int)skaterStats["shutouts"],
                             Saves = (int)skaterStats["saves"],
-                            SavePercentage = (int)skaterStats["savePercentage"],
+                            SavePercentage = (decimal)skaterStats["savePercentage"],
                             PowerPlaySaves = (int)skaterStats["powerPlaySaves"],
                             ShotsAgainst = (int)skaterStats["shotsAgainst"],
                             ShortHandedSaves = (int)skaterStats["shortHandedSaves"]
@@ -196,7 +196,7 @@ namespace TBL_Stats.Services
                             Games = (int)skaterStats["games"],
                             Shutouts = (int)skaterStats["shutouts"],
                             Saves = (int)skaterStats["saves"],
-                            SavePercentage = (int)skaterStats["savePercentage"],
+                            SavePercentage = (decimal)skaterStats["savePercentage"],
                             PowerPlaySaves = (int)skaterStats["powerPlaySaves"],
                             ShotsAgainst = (int)skaterStats["shotsAgainst"],
                             ShortHandedSaves = (int)skaterStats["shortHandedSaves"]

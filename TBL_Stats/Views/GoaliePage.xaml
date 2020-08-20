@@ -9,8 +9,8 @@
     <ScrollView VerticalScrollBarVisibility="Always">
         <Grid Margin="40,0,40,0" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="400" />
-                <RowDefinition Height="400" />
+                <RowDefinition Height="450" />
+                <RowDefinition Height="450" />
             </Grid.RowDefinitions>
             <TableView Intent="Data" HorizontalOptions="Center" Grid.Row="0">
                 <TableRoot>
@@ -58,6 +58,17 @@
                                TextColor="Black"
                                FontSize="Medium"/>
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShotsAgainst}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Save Percentage"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.SavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
@@ -139,6 +150,17 @@
                                TextColor="Black"
                                FontSize="Medium"/>
                                 <Label Text="{Binding Skater.PlayoffGoalieStats.ShotsAgainst}"
+                               HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Save Percentage"
+                               TextColor="Black"
+                               FontSize="Medium"/>
+                                <Label Text="{Binding Skater.RegularSeasonGoalieStats.SavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
                                 FontSize="Medium"/>
