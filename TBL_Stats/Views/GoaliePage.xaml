@@ -7,10 +7,10 @@
              x:Class="TBL_Stats.Views.GoaliePage"
              Title="{Binding Skater.Name}">
     <ScrollView VerticalScrollBarVisibility="Always">
-        <Grid Margin="40,0,40,0" RowSpacing="0">
+        <Grid Margin="5,0,5,0" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="600" />
-                <RowDefinition Height="600" />
+                <RowDefinition Height="550" />
+                <RowDefinition Height="550" />
             </Grid.RowDefinitions>
             <TableView Intent="Data" HorizontalOptions="Center" Grid.Row="0">
                 <TableRoot>
@@ -23,77 +23,90 @@
                             </Picker>
                         </ViewCell>
                         <ViewCell>
-                            <StackLayout>
+                            <StackLayout BackgroundColor="#00205b">
                                 <Label Text="Regular Season"
-                               TextColor="Black"
-                               FontSize="Medium"
-                               HorizontalOptions="CenterAndExpand"/>
+                               TextColor="White"
+                                FontSize="30"
+                               HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Games Played"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.Games}"
                                  HorizontalOptions="EndAndExpand"
                                  TextColor="Black"
-                                 FontSize="Medium"/>
+                                 FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Saves"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.Saves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Shots Against"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShotsAgainst}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Save Percentage"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.SavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Shutouts"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.Shutouts}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Powerplay Saves"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.PowerPlaySaves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
@@ -104,7 +117,8 @@
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShortHandedSaves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
@@ -115,29 +129,34 @@
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.EvenStrengthSavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Powerplay Save Percentage"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.PowerPlaySavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Shorthanded Save Percentage"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.ShortHandedSavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                     </TableSection>
@@ -148,10 +167,10 @@
                 <TableRoot>
                     <TableSection>
                         <ViewCell>
-                            <StackLayout>
+                            <StackLayout BackgroundColor="#00205b">
                                 <Label Text="Playoffs"
-                               TextColor="Black"
-                               FontSize="Medium"
+                               TextColor="White"
+                               FontSize="30"
                                HorizontalOptions="CenterAndExpand"/>
                             </StackLayout>
                         </ViewCell>
@@ -159,22 +178,26 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Games Played"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.PlayoffGoalieStats.Games}"
                                  HorizontalOptions="EndAndExpand"
                                  TextColor="Black"
-                                 FontSize="Medium"/>
+                                 FontSize="Medium"
+                                VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Saves"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.PlayoffGoalieStats.Saves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
@@ -185,7 +208,8 @@
                                 <Label Text="{Binding Skater.PlayoffGoalieStats.ShotsAgainst}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
@@ -196,73 +220,86 @@
                                 <Label Text="{Binding Skater.RegularSeasonGoalieStats.SavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Shutouts"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.PlayoffGoalieStats.Shutouts}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Powerplay Saves"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.PlayoffGoalieStats.PowerPlaySaves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Shorthanded Saves"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.PlayoffGoalieStats.ShortHandedSaves}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Even Strength Save Percentage"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.PlayoffGoalieStats.EvenStrengthSavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Powerplay Save Percentage"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.PlayoffGoalieStats.PowerPlaySavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Shorthanded Save Percentage"
                                TextColor="Black"
-                               FontSize="Medium"/>
+                               FontSize="Medium"
+                                       VerticalOptions="Center"/>
                                 <Label Text="{Binding Skater.PlayoffGoalieStats.ShortHandedSavePercentage}"
                                HorizontalOptions="EndAndExpand"
                                 TextColor="Black"
-                                FontSize="Medium"/>
+                                FontSize="Medium"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                     </TableSection>
